@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useCallback, useState } from "react";
 
 import styles from "./sticker-panel.module.css";
 
 import type { StickerType } from "#/types/sticker";
+
+import { Button } from "#/components/ui";
 
 type StickerPanelProps = {
   selectedSticker: StickerType;
@@ -60,17 +62,43 @@ export const StickerPanel = ({
   selectedSticker,
   onStickerChange,
 }: StickerPanelProps) => {
-  const handleStickerClick = (type: StickerType) => {
-    onStickerChange(type);
-  };
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleStickerClick = useCallback(
+    (type: StickerType) => {
+      onStickerChange(type);
+    },
+    [onStickerChange]
+  );
+
+  const toggleOpen = useCallback(() => {
+    setIsOpen((v) => !v);
+  }, []);
 
   return (
-    <div className={styles.panel}>
-      <div className={styles.stickerGrid}>
+    <div
+      className={`${styles.panel} ${isOpen ? styles.open : styles.collapsed}`}
+      aria-hidden={false}
+    >
+      <Button
+        type="button"
+        className={styles.handle}
+        onClick={toggleOpen}
+        aria-expanded={isOpen}
+        aria-controls="sticker-grid"
+        aria-label={
+          isOpen ? "ステッカーパネルを閉じる" : "ステッカーパネルを開く"
+        }
+      >
+        <span className={styles.handleBar} />
+      </Button>
+
+      <div id="sticker-grid" className={styles.stickerGrid} role="list">
         {STICKER_OPTIONS.map((sticker) => (
           <button
             key={sticker.type}
             type="button"
+            role="listitem"
             className={`${styles.stickerButton} ${
               selectedSticker === sticker.type ? styles.selected : ""
             }`}

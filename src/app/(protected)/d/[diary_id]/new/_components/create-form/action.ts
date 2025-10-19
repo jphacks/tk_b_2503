@@ -88,5 +88,5 @@ export const createPostAndRedirect = actionClient
       throw new Error("投稿の保存に失敗しました");
     }
 
-    redirect(`/users/${session.user.id}/feed/${inserted.id}`);
+    redirect(`/d/${inserted.diaryId}`);
   });

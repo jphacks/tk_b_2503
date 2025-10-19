@@ -1,6 +1,6 @@
 import "server-only";
 
-import { count, desc, eq, or } from "drizzle-orm";
+import { desc, eq, or } from "drizzle-orm";
 
 import type {
   DiaryWithMembersData,
@@ -8,7 +8,7 @@ import type {
 } from "#/types/diary";
 
 import { db } from "#/clients/db";
-import { diaries, diaryMembers } from "#/libs/drizzle/schema";
+import { diaries, diaryMembers, user } from "#/libs/drizzle/schema";
 
 export const getUserDiaries = async (
   userId: string,
@@ -31,14 +31,16 @@ export const getUserDiaries = async (
 
     const diariesWithMembership: DiaryWithMembersData[] = await Promise.all(
       userDiaries.map(async (diary) => {
-        const memberCountResult = await db
-          .select({ count: count() })
+        // 日記帳のメンバー情報を取得
+        const membersResult = await db
+          .select({
+            id: user.id,
+            name: user.name,
+            image: user.image,
+          })
           .from(diaryMembers)
+          .innerJoin(user, eq(diaryMembers.memberId, user.id))
           .where(eq(diaryMembers.diaryId, diary.id));
-
-        const memberCount = memberCountResult[0]?.count || 0;
-
-        const totalMemberCount = memberCount;
 
         return {
           id: diary.id,
@@ -47,7 +49,7 @@ export const getUserDiaries = async (
           authorId: diary.authorId,
           createdAt: diary.createdAt,
           isAuthor: diary.authorId === currentUserId,
-          memberCount: totalMemberCount,
+          members: membersResult,
         };
       })
     );

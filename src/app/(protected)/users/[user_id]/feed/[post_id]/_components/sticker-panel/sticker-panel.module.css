@@ -8,18 +8,6 @@
   box-shadow: var(--shadow-xl);
 }
 
-.header {
-  margin-block-end: 1rem;
-}
-
-.title {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
-  text-align: center;
-}
-
 .stickerGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

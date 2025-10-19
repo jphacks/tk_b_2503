@@ -4,12 +4,14 @@ import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
 
+import { PostWithStickers } from "../post-with-stickers";
+
 import styles from "./diary-view.module.css";
 
+import type { DiarySticker } from "#/app/(protected)/d/[diary_id]/_libs/get-diary-stickers";
 import type { Diary, Post } from "#/clients/db";
 
 import { Button } from "#/components/ui";
-import { TEXT_IMAGE_WIDTH, TEXT_IMAGE_HEIGHT } from "#/libs/constants";
 
 interface FlippingState {
   isFlipping: boolean;
@@ -19,9 +21,16 @@ interface FlippingState {
 interface DiaryViewProps {
   diary: Diary;
   posts: Post[];
+  stickers: DiarySticker[];
+  currentUserId?: string;
 }
 
-export const DiaryView: FC<DiaryViewProps> = ({ diary, posts }) => {
+export const DiaryView: FC<DiaryViewProps> = ({
+  diary,
+  posts,
+  stickers,
+  currentUserId,
+}) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [flippingState, setFlippingState] = useState<FlippingState>({
     isFlipping: false,
@@ -89,8 +98,11 @@ export const DiaryView: FC<DiaryViewProps> = ({ diary, posts }) => {
             <NextPageWrapper>
               <DiaryPage
                 post={posts[currentPage + 1]}
+                stickers={stickers}
                 page={currentPage}
                 totalPage={totalPages}
+                currentUserId={currentUserId}
+                isCurrent={false}
               />
             </NextPageWrapper>
           )}
@@ -109,8 +121,11 @@ export const DiaryView: FC<DiaryViewProps> = ({ diary, posts }) => {
             <CurrentPageWrapper flippingState={flippingState}>
               <DiaryPage
                 post={posts[currentPage]}
+                stickers={stickers}
                 page={currentPage}
                 totalPage={totalPages}
+                currentUserId={currentUserId}
+                isCurrent={true}
               />
             </CurrentPageWrapper>
           )}
@@ -129,8 +144,11 @@ export const DiaryView: FC<DiaryViewProps> = ({ diary, posts }) => {
             <PrevPageWrapper flippingState={flippingState}>
               <DiaryPage
                 post={posts[currentPage - 1]}
+                stickers={stickers}
                 page={currentPage}
                 totalPage={totalPages}
+                currentUserId={currentUserId}
+                isCurrent={false}
               />
             </PrevPageWrapper>
           )}
@@ -170,30 +188,23 @@ const NextPageWrapper: FC<{ children: ReactNode }> = ({ children }) => {
   return <div className={styles.nextPageWrapper}>{children}</div>;
 };
 
-const DiaryPage: FC<{ post: Post; page: number; totalPage: number }> = ({
-  post,
-  page,
-  totalPage,
-}) => {
+const DiaryPage: FC<{
+  post: Post;
+  stickers: DiarySticker[];
+  page: number;
+  totalPage: number;
+  currentUserId?: string;
+  isCurrent: boolean;
+}> = ({ post, stickers, page, totalPage, currentUserId, isCurrent }) => {
   return (
-    <div className={styles.textImageWrapper}>
-      <img
-        src={post.textImage}
-        alt={post.rawText}
-        className={styles.textImage}
-        style={{ aspectRatio: `${TEXT_IMAGE_WIDTH} / ${TEXT_IMAGE_HEIGHT}` }}
+    <div>
+      <PostWithStickers
+        post={post}
+        key={post.id}
+        initialStickers={stickers.filter((s) => s.postId === post.id)}
+        currentUserId={currentUserId}
+        showStickerPanel={isCurrent}
       />
-      {post.image && (
-        <div className={styles.attachmentWrapper}>
-          <img
-            src={post.image ?? ""}
-            alt=""
-            className={styles.attachment}
-            width={300}
-            height={300}
-          />
-        </div>
-      )}
       <div className={styles.pageIndicator}>
         {page + 1} / {totalPage}
       </div>

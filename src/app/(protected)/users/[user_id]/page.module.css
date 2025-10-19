@@ -148,3 +148,50 @@
   width: 2rem;
   height: auto;
 }
+
+.emptyMessage {
+  padding: 2rem;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* Member Avatars */
+.memberAvatars {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.memberAvatar {
+  width: 2rem;
+  height: 2rem;
+  margin-right: -1rem;
+  object-fit: cover;
+  background-color: var(--color-background-secondary);
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-full);
+}
+
+.memberAvatar:first-child {
+  margin-right: 0;
+}
+
+.memberCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-right: -1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-secondary);
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-full);
+}

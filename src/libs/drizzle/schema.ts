@@ -180,6 +180,7 @@ export const stickers = sqliteTable("stickers", {
       "swirl-coral",
       "uruuru",
       "gahahaha",
+      "jphacks",
     ],
   }).notNull(),
   x: real("x").notNull(),
@@ -190,6 +191,8 @@ export const stickers = sqliteTable("stickers", {
     .default(sql`(unixepoch())`)
     .notNull(),
 });
+
+export type Sticker = (typeof stickers)["$inferSelect"];
 
 // DiaryとUserの中間テーブル
 export const diaryMembers = sqliteTable(

@@ -7,7 +7,8 @@ export type StickerType =
   | "star-sparkle"
   | "swirl-coral"
   | "uruuru"
-  | "gahahaha";
+  | "gahahaha"
+  | "jphacks";
 
 export type Sticker = {
   id: string;

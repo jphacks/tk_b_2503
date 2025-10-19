@@ -6,10 +6,17 @@ export type Diary = {
   createdAt: Date | null;
 };
 
+// 日記帳のメンバー情報の型
+export type DiaryMember = {
+  id: string;
+  name: string;
+  image: string | null;
+};
+
 // メンバー情報を含む日記帳の型
 export type DiaryWithMembersData = Diary & {
   isAuthor: boolean;
-  memberCount: number;
+  members: DiaryMember[];
 };
 
 export type GetUserDiariesResponse = {

@@ -179,6 +179,13 @@ const Diary = ({ diary }: DiaryProps) => {
   // -5度から+5度の範囲でランダムな回転角度を生成
   const randomRotation = Math.random() * 10 - 5;
 
+  const MAX_VISIBLE_MEMBERS = 6;
+  const visibleMembers = diary.members.slice(0, MAX_VISIBLE_MEMBERS);
+  const remainingMembersCount = Math.max(
+    0,
+    diary.members.length - MAX_VISIBLE_MEMBERS
+  );
+
   return (
     <DiaryWrapper
       backgroundColor={diary.backgroundColor}
@@ -187,6 +194,23 @@ const Diary = ({ diary }: DiaryProps) => {
       <div className={styles.diaryContent}>
         <h3 className={styles.diaryTitle}>{diary.title}</h3>
       </div>
+      {diary.members.length > 0 && (
+        <div className={styles.memberAvatars}>
+          {remainingMembersCount > 0 && (
+            <div className={styles.memberCount}>+{remainingMembersCount}</div>
+          )}
+          {visibleMembers.reverse().map((member) => (
+            <Image
+              key={member.id}
+              src={member.image ?? "/default-avatar.webp"}
+              alt={`${member.name}のアバター`}
+              className={styles.memberAvatar}
+              width={32}
+              height={32}
+            />
+          ))}
+        </div>
+      )}
     </DiaryWrapper>
   );
 };
