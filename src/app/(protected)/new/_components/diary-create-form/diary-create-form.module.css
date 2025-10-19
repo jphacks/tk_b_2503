@@ -1,0 +1,122 @@
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: var(--space-xl);
+  margin-inline: auto;
+}
+
+.pageTitle {
+  margin-block-end: var(--space-xl);
+  font-size: var(--text-2xl);
+  font-weight: bold;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--text-base);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(71 54 44 / 10%);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.charCount {
+  align-self: flex-end;
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.error {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--text-sm);
+  color: #c00;
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: var(--radius-md);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-block-start: var(--space-xl);
+}
+
+.cancelButton,
+.submitButton {
+  flex: 1;
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.cancelButton {
+  color: var(--color-text-secondary);
+  background-color: var(--color-gray-200);
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: var(--color-gray-300);
+}
+
+.submitButton {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.submitButton:hover:not(:disabled) {
+  box-shadow: var(--shadow-md);
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.cancelButton:disabled,
+.submitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (width <= 480px) {
+  .container {
+    padding: var(--space-lg);
+  }
+
+  .pageTitle {
+    font-size: var(--text-xl);
+  }
+}

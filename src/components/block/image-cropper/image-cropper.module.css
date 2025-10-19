@@ -1,0 +1,30 @@
+.cropContainer {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cropArea {
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+  overflow: hidden;
+  background: var(--color-background-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.cropControls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.zoomSlider {
+  width: 100%;
+}

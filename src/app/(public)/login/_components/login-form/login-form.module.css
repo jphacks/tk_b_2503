@@ -1,0 +1,79 @@
+.loginMethods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.lineButton {
+  display: flex;
+  align-items: center;
+  padding-block: 0;
+  font-weight: bold;
+  color: white;
+  background-color: #06c755;
+}
+
+.lineButton:hover {
+  background-color: #05b34c;
+}
+
+.lineButton:active {
+  background-color: #048b3b;
+}
+
+.lineButtonIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-left: -1.5rem;
+  border-right: 1px solid rgba(0 0 0 / 8%);
+}
+
+.lineButtonText {
+  flex: 1;
+  text-align: center;
+}
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  padding-block: 0;
+  font-weight: bold;
+  color: #3c4043;
+  background-color: white;
+  border: 1px solid #dadce0;
+}
+
+.googleButton:hover {
+  background-color: #f8f9fa;
+  border-color: #c4c7c5;
+}
+
+.googleButton:active {
+  background-color: #e8eaed;
+  border-color: #a9aaae;
+}
+
+.googleButtonIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-left: -1.5rem;
+}
+
+.googleButtonText {
+  flex: 1;
+  text-align: center;
+}
+
+.errorMessage {
+  padding-block: 0.75rem;
+  padding-inline: var(--space-md);
+  color: var(--color-text-primary);
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-sm);
+}

@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.colorGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.colorButton {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.colorButton:hover {
+  box-shadow: var(--shadow-md);
+  transform: scale(1.1);
+}
+
+.colorButton.selected {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: var(--text-xl);
+  font-weight: bold;
+  color: var(--color-white);
+  text-shadow: 0 1px 2px rgba(0 0 0 / 50%);
+  transform: translate(-50%, -50%);
+}
+
+@media (width >= 768px) {
+  .colorGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.imageContainer {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.imageContainer:hover::after {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-white);
+  white-space: nowrap;
+  pointer-events: none;
+  content: "クリックしてステッカーを貼る";
+  background-color: var(--color-gray-800);
+  border-radius: var(--radius-sm);
+  opacity: 0.9;
+  transform: translateX(-50%);
+}
+
+.textImage {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.mediaContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.mediaImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}

@@ -1,0 +1,24 @@
+{
+  "lang": "ja",
+  "name": "Haru",
+  "short_name": "Haru",
+  "description": "懐かしさから今再燃しているシール帳を、Webで友だちといっしょに作り上げられるサービスです。100ページくらいの白紙の本に、みんなで共有したい出来事を文章や画像として書き込みます。そのページへ好きな位置へステッカーを配置することで、一つの本をみんなで完成させていくことを楽しみます。できあがった1ページはそのままSNSに切り出してシェアすることもできます。",
+  "short_description": "みんなで一緒に作り上げるシール日記帳",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#ff4548",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

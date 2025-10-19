@@ -1,0 +1,61 @@
+.container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sticker {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  pointer-events: auto;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  filter: drop-shadow(0 2px 4px rgba(0 0 0 / 20%));
+  transition: all 0.2s;
+}
+
+.sticker:hover {
+  transform: translate(-50%, -50%) scale(1.1) !important;
+}
+
+.sticker:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.deletable {
+  position: relative;
+}
+
+.deletable:hover .deleteIcon {
+  opacity: 1;
+}
+
+.stickerImage {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.deleteIcon {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--color-white);
+  background-color: var(--color-accent-dark);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transition: opacity 0.2s;
+}

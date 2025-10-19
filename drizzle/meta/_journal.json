@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1760753744197,
+      "tag": "0000_wandering_leper_queen",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1760763229557,
+      "tag": "0001_large_cammi",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1760793229921,
+      "tag": "0002_natural_meggan",
+      "breakpoints": true
+    }
+  ]
+}

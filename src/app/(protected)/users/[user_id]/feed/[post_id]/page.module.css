@@ -1,0 +1,115 @@
+.container {
+  max-inline-size: 37.5rem;
+  padding: var(--space-md);
+  margin: 0 auto;
+}
+
+.postCard {
+  padding: var(--space-lg);
+  margin-block-end: var(--space-xl);
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: var(--space-md);
+}
+
+.authorInfo {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.avatar {
+  object-fit: cover;
+  border-radius: var(--radius-full);
+}
+
+.avatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-white);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  border-radius: var(--radius-full);
+}
+
+.authorDetails {
+  flex: 1;
+}
+
+.authorName {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.authorLink {
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.authorLink:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+.postContent {
+  margin-block: var(--space-lg);
+  text-align: center;
+}
+
+.navigation {
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.nextButton {
+  display: inline-flex;
+  gap: var(--space-sm);
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: var(--color-white);
+  text-decoration: none;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.nextButton:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+@media (width <= 48rem) {
+  .container {
+    padding: var(--space-sm);
+  }
+
+  .postCard {
+    padding: var(--space-md);
+  }
+}
